@@ -3,8 +3,10 @@ package com.example.myhome.authentication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.myhome.R;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myhome.maincontroller.BottomNavBarActivity;
+import com.example.myhome.reportissue.helpers.EmailSender;
 import com.example.myhome.reportissue.helpers.MailSender;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -75,7 +78,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                 mp.start();
 
                 if (!pinFromUser.getText().toString().isEmpty()) {
-                    if (!pinFromUser.getText().toString().isEmpty()) {
+                    if (pinFromUser.getText().toString().equals(String.valueOf(otp))) {
                         DynamicToast.makeSuccess(OtpVerificationActivity.this, "Verification Completed!!", 10).show();
                         signUser(emailid,pwd);
 
@@ -104,16 +107,29 @@ public class OtpVerificationActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    MailSender sender = new MailSender("widambedeograss5@gmail.com", "0744748698");
-                    System.out.println(String.valueOf(otp));
-                    sender.sendMail("2 Factor OTP Verification for MyHome App",
-                            "OTP for My Home 2 factor authentication is " + String.valueOf(otp),
-                            "widambedeograss5@gmail.com",
-                            emailid);
+                    EmailSender sn = new EmailSender();
+                    EmailSender.sendEmail(emailid, "2 Factor OTP Verification for MyHome App","OTP for My Home 2 factor authentication is " + String.valueOf(otp));
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailid});
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "\"2 Factor OTP Verification for MyHome App\"");
+                    intent.putExtra(Intent.EXTRA_TEXT,"OTP for My Home 2 factor authentication is " + String.valueOf(otp));
+                    startActivity(intent);
+//                    if (intent.resolveActivity(getPackageManager()) != null) {
+//
+//                    }
+
+//                    MailSender sender = new MailSender("widambedeograss5@gmail.com", "0744748698");
+//                    System.out.println(String.valueOf(otp));
+//                    sender.sendMail("2 Factor OTP Verification for MyHome App",
+//                            "OTP for My Home 2 factor authentication is " + String.valueOf(otp),
+//                            "widambedeograss5@gmail.com",
+//                            emailid);
 
 
                     OtpVerificationActivity.this.runOnUiThread(new Runnable()
                     {
+                        @SuppressLint("SetTextI18n")
                         public void run()
                         {
                             mob_No.setText("Enter one time password sent on "+ emailid);
@@ -124,6 +140,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     OtpVerificationActivity.this.runOnUiThread(new Runnable()
                     {
+                        @SuppressLint("SetTextI18n")
                         public void run()
                         {
                             mob_No.setText("ERROR OCCURED! TRY AGAIN!");
