@@ -145,25 +145,10 @@ public class BottomNavBarActivity extends AppCompatActivity  implements Navigati
                         mp.start();
                         break;
 
-                    case R.id.l_item_water:
-                       fm.beginTransaction().hide(active).show(fragment2).commit();
-                        active = fragment2;
-                        toolbar.setTitle("WATER TANK");
-                        mp.start();
-                        break;
-
                     case R.id.l_item_elect:
                         fm.beginTransaction().hide(active).show(fragment3).commit();
                         active = fragment3;
                         toolbar.setTitle("ELECTRICITY");
-                        mp.start();
-                        break;
-
-
-                    case R.id.l_item_leaf:
-                        fm.beginTransaction().hide(active).show(fragment4).commit();
-                        active = fragment4;
-                        toolbar.setTitle("PLANT");
                         mp.start();
                         break;
                 }

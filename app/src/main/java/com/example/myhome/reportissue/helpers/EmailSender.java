@@ -8,8 +8,8 @@ import javax.mail.internet.MimeMessage;
 public class EmailSender {
     private static final String HOST = "smtp.gmail.com";
     private static final int PORT = 587;
-    private static final String USERNAME = "widambedeograss5@gmail.com";
-    private static final String PASSWORD = "fuisdhsdudsudsiu";
+    private static final String USERNAME = "winfridashoo7@gmail.com";
+    private static final String PASSWORD = "wegwjiusxoxqftdf";
 
     public static void sendEmail(String recipient, String subject, String body) {
         Properties props = new Properties();

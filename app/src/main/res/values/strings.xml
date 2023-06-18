@@ -64,7 +64,7 @@ This policy is effective as of 2020-05-01</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="full_name">Full Name</string>
     <string name="sign_up">SIGN-UP</string>
-    <string name="by">By Winny</string>
+    <string name="by">Smart Home</string>
     <string name="port_1">PORT 1</string>
     <string name="port_3">PORT 3</string>
     <string name="update">UPDATE</string>
@@ -73,7 +73,7 @@ This policy is effective as of 2020-05-01</string>
     <string name="frequency_hz">FREQUENCY (Hz)</string>
     <string name="voltage_v">VOLTAGE (V)</string>
     <string name="current_a">CURRENT (A)</string>
-    <string name="bill">BILL (₹)</string>
+    <string name="bill">BILL (Tsh)</string>
     <string name="energy_kwh">ENERGY (kWh)</string>
     <string name="power_w">POWER (W)</string>
     <string name="show_statistics">SHOW STATISTICS</string>

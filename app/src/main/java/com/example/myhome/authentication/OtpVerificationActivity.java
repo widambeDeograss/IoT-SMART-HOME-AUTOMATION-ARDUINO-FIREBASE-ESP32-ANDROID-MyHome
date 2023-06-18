@@ -114,7 +114,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                     intent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailid});
                     intent.putExtra(Intent.EXTRA_SUBJECT, "\"2 Factor OTP Verification for MyHome App\"");
                     intent.putExtra(Intent.EXTRA_TEXT,"OTP for My Home 2 factor authentication is " + String.valueOf(otp));
-                    startActivity(intent);
+//                    startActivity(intent);
 //                    if (intent.resolveActivity(getPackageManager()) != null) {
 //
 //                    }

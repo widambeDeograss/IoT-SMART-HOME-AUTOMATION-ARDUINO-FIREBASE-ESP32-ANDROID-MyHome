@@ -1,5 +1,6 @@
 package com.example.myhome.maincontroller;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -57,6 +58,7 @@ public class DashboardFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,10 +68,10 @@ public class DashboardFragment extends Fragment {
         database = FirebaseDatabase.getInstance().getReference("users/"+currentFirebaseUser.getUid());
         mp = MediaPlayer.create(getActivity(), R.raw.buttonsound);
 
-        temp = myFragmentView.findViewById(R.id.temp);
-        humi = myFragmentView.findViewById(R.id.humidity);
-        aqi =  myFragmentView.findViewById(R.id.aqi);
-        fgs = myFragmentView.findViewById(R.id.home_fg_status);
+//        ``temp`` = myFragmentView.findViewById(R.id.temp);
+//        humi = myFragmentView.findViewById(R.id.humidity);
+//        aqi =  myFragmentView.findViewById(R.id.aqi);
+//        fgs = myFragmentView.findViewById(R.id.home_fg_status);
 
         switch1 = myFragmentView.findViewById(R.id.switch1);
         switch2 = myFragmentView.findViewById(R.id.switch2);
@@ -81,7 +83,7 @@ public class DashboardFragment extends Fragment {
         imageView3 = myFragmentView.findViewById(R.id.imageView3);
         imageView4 = myFragmentView.findViewById(R.id.imageView4);
 
-        fgi = myFragmentView.findViewById(R.id.fg_status);
+        fgi = myFragmentView.findViewById(R.id.imageView1);
 
         gifImageView = myFragmentView.findViewById(R.id.weather_animation);
 
@@ -324,19 +326,19 @@ public class DashboardFragment extends Fragment {
                     }
 
 
-                    if (mq135 < 500) {
-                        aqi.setText(mq135.toString() + " PPM \n FRESH AIR");
-                        aqi.setTextColor(Color.GREEN);
-                    } else if (mq135 > 500 && mq135 <= 1000) {
-                        aqi.setText(mq135.toString() + " PPM \n POOR AIR");
-                        aqi.setTextColor(Color.YELLOW);
-                    } else if (mq135 > 1000) {
-                        aqi.setText(mq135.toString() + " PPM \n HAZARDOUS");
-                        aqi.setTextColor(Color.RED);
-                    }
+//                    if (mq135 < 500) {
+//                        aqi.setText(mq135.toString() + " PPM \n FRESH AIR");
+//                        aqi.setTextColor(Color.GREEN);
+//                    } else if (mq135 > 500 && mq135 <= 1000) {
+//                        aqi.setText(mq135.toString() + " PPM \n POOR AIR");
+//                        aqi.setTextColor(Color.YELLOW);
+//                    } else if (mq135 > 1000) {
+//                        aqi.setText(mq135.toString() + " PPM \n HAZARDOUS");
+//                        aqi.setTextColor(Color.RED);
+//                    }
 
-                    temp.setText(temperature.toString() + " °C");
-                    humi.setText(humidity.toString() + " %");
+//                    temp.setText(temperature.toString() + " °C");
+//                    humi.setText(humidity.toString() + " %");
                 }
             }
 
